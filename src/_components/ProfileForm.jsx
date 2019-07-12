@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Form,
@@ -90,7 +90,7 @@ class ProfileForm extends Component {
     return (
       <Form className="profile__form" layout="vertical">
         {section === 'personal' && (
-          <Fragment>
+          <>
             <ProfileFormBlock
               nameForParams="FullName"
               isVisibleInput={isVisibleInputFullName}
@@ -141,13 +141,13 @@ class ProfileForm extends Component {
                 name="phone"
                 defaultValue={phone}
                 onChange={this.handleChangeInput}
-                placeholder="Phone"
+                placeholder="Телефон"
               />
             </ProfileFormBlock>
-          </Fragment>
+          </>
         )}
         {section === 'location' && (
-          <Fragment>
+          <>
             <ProfileFormBlock
               nameForParams="Country"
               isVisibleInput={isVisibleInputCountry}
@@ -192,7 +192,7 @@ class ProfileForm extends Component {
                 <Option name="language" value="Английский">Английский</Option>
               </Select>
             </ProfileFormBlock>
-          </Fragment>
+          </>
         )}
       </Form>
     );
