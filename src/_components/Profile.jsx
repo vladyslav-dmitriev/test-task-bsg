@@ -1,50 +1,75 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'antd';
 
+import ProfileTable from './ProfileTable';
 import ProfileForm from './ProfileForm';
 
 class Profile extends Component {
   state = {
     isModalVisible: false,
-    name: '',
-    surname: '',
-    email: '',
+    isFormSubmit: false,
+    id: 28366,
+    name: 'Владимир',
+    surname: 'Ена',
+    email: 'makwild@gmail.com',
     phone: '',
+    language: 'Русский',
   };
 
   showModal = () => {
     this.setState({ isModalVisible: true });
   };
 
-  handleSave = () => {
-    this.setState({ isModalVisible: false });
+  handleFormSubmit = () => {
+    this.setState({ isFormSubmit: true });
   };
 
-  handleCancel = () => {
+  handleSave = (newProfileValues) => {
+    this.setState(prevState => ({
+      ...prevState,
+      ...newProfileValues,
+      isModalVisible: false,
+      isFormSubmit: false,
+    }));
+  };
+
+  handleModalClose = () => {
     this.setState({ isModalVisible: false });
   };
 
   renderModalFooter = () => [
-    <Button key="back" onClick={this.handleCancel}>Cancel</Button>,
-    <Button key="submit" type="primary" onClick={this.handleSave}>Save</Button>,
+    <Button key="back" onClick={this.handleModalClose}>Отменить</Button>,
+    <Button key="submit" type="primary" onClick={this.handleFormSubmit}>Сохранить</Button>,
   ];
 
   render() {
     const {
+      isModalVisible,
+      id,
       name,
       surname,
       email,
       phone,
+      language,
+      isFormSubmit,
     } = this.state;
 
     return (
       <div className="profile">
-        <Button type="primary" onClick={this.showModal}>Open Modal</Button>
+        <ProfileTable
+          id={id}
+          name={name}
+          surname={surname}
+          email={email}
+          phone={phone}
+          language={language}
+          showModal={this.showModal}
+        />
         <Modal
-          title="Edit Profile"
-          visible={this.state.isModalVisible}
-          onOk={this.handleSave}
-          onCancel={this.handleCancel}
+          title="Редактирование профиля"
+          visible={isModalVisible}
+          onCancel={this.handleModalClose}
+          onOk={this.handleFormSubmit}
           footer={this.renderModalFooter()}
           centered
         >
@@ -53,6 +78,9 @@ class Profile extends Component {
             surname={surname}
             email={email}
             phone={phone}
+            language={language}
+            handleSave={this.handleSave}
+            isFormSubmit={isFormSubmit}
           />
         </Modal>
       </div>

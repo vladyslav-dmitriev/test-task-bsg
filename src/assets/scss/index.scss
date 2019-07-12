@@ -1,5 +1,50 @@
-@import 'vars';
+@import 'vars',
+        '_components/profile';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background: $baseColor;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#root {
+  height: 100%;
+}
+
+.content {
+  background: white;
+}
+
+.ant-layout {
+  height: 100%;
+
+  &-header,
+  &-footer,
+  &-sider {
+    text-align: center;
+  }
+
+  &-header,
+  &-footer {
+    background: $grayLight;
+  }
+
+  &-sider {
+    background: $grayDark;
+    display: flex;
+    align-items: center;
+
+    &-children {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
