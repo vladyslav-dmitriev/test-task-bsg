@@ -12,12 +12,15 @@ class Profile extends Component {
     name: 'Владимир',
     surname: 'Ена',
     email: 'makwild@gmail.com',
-    phone: '',
+    phone: '093 772 16 25',
+    country: 'Украина',
+    timezone: '',
     language: 'Русский',
+    section: '',
   };
 
-  showModal = () => {
-    this.setState({ isModalVisible: true });
+  showModal = (section) => {
+    this.setState({ isModalVisible: true, section });
   };
 
   handleFormSubmit = () => {
@@ -45,13 +48,16 @@ class Profile extends Component {
   render() {
     const {
       isModalVisible,
+      isFormSubmit,
       id,
       name,
       surname,
       email,
       phone,
+      country,
+      timezone,
       language,
-      isFormSubmit,
+      section,
     } = this.state;
 
     return (
@@ -78,9 +84,12 @@ class Profile extends Component {
             surname={surname}
             email={email}
             phone={phone}
+            country={country}
+            timezone={timezone}
             language={language}
-            handleSave={this.handleSave}
+            section={section}
             isFormSubmit={isFormSubmit}
+            handleSave={this.handleSave}
           />
         </Modal>
       </div>

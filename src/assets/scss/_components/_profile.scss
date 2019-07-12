@@ -2,6 +2,26 @@
 
 .profile {
   margin-top: 100px;
+
+  &__form {
+    .ant-input,
+    .ant-select {
+      margin-top: 10px;
+    }
+  }
+
+  &__title {
+    font-weight: $fontBold;
+    width: 100%;
+    cursor: text;
+  }
+
+  &__value {
+    margin-top: 4px;
+    width: 100%;
+    cursor: text;
+    min-height: 38px;
+  }
 }
 
 .profile-table {

@@ -38,7 +38,7 @@ const ProfileTable = ({
         <div className="profile-table__mode">Демо режим</div>
       </Col>
     </Row>
-    <div className="profile-table__item" role="presentation" onClick={showModal}>
+    <div className="profile-table__item" role="presentation" onClick={() => showModal('personal')}>
       <Row>
         <Col className="profile-table__col" span={19}>
           <div className="profile-table__section">Имя, телефон, email</div>
@@ -48,7 +48,7 @@ const ProfileTable = ({
         </Col>
       </Row>
     </div>
-    <div className="profile-table__item" role="presentation" onClick={showModal}>
+    <div className="profile-table__item" role="presentation" onClick={() => showModal('location')}>
       <Row>
         <Col className="profile-table__col" span={19}>
           <div className="profile-table__section">Страна, часовой пояс, язык</div>
